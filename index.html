@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#001b0e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Birhan Cash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main id="app">
+
+    <!-- SCREEN 1: LOADING -->
+    <section id="loadingScreen" class="screen active" aria-label="Loading screen">
+      <img src="assets/loading-screen.png" class="screen-image" alt="Birhan Cash loading">
+      <div class="loading-ui">
+        <div id="loadingText">Loading your rewards...</div>
+        <div class="progress">
+          <div id="progressBar"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: HOME -->
+    <section id="homeScreen" class="screen" aria-label="Birhan Cash home">
+      <img src="assets/home-screen.png" class="screen-image" alt="Birhan Cash home">
+
+      <!-- Transparent clickable areas positioned over the reference design -->
+      <button class="hotspot play" data-message="Play Games" aria-label="Play Games"></button>
+      <button class="hotspot earn" data-message="Earn Rewards" aria-label="Earn Rewards"></button>
+      <button class="hotspot withdraw" data-message="Withdraw Cash" aria-label="Withdraw Cash"></button>
+      <button class="hotspot grow" data-message="Grow Together" aria-label="Grow Together"></button>
+
+      <button id="signupBtn" class="hotspot signup" aria-label="Sign Up"></button>
+      <button id="loginBtn" class="hotspot login" aria-label="Log In"></button>
+
+      <div class="dots" aria-hidden="true">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- Simple modal for Sign Up / Log In -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="closeModal" class="close" aria-label="Close">×</button>
+      <h2 id="modalTitle">Sign Up</h2>
+      <p id="modalSubtitle">Create your Birhan Cash account.</p>
+
+      <form id="accountForm">
+        <input id="nameInput" type="text" placeholder="Full name" autocomplete="name">
+        <input id="emailInput" type="email" placeholder="Email address" autocomplete="email" required>
+        <input id="passwordInput" type="password" placeholder="Password" autocomplete="new-password" required>
+        <button type="submit" class="form-submit">Continue →</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
