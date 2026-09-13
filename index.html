@@ -1,68 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#001b0e">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Birhan Cash</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <main id="app">
-
-    <!-- SCREEN 1: LOADING -->
-    <section id="loadingScreen" class="screen active" aria-label="Loading screen">
-      <img src="assets/loading-screen.png" class="screen-image" alt="Birhan Cash loading">
-      <div class="loading-ui">
-        <div id="loadingText">Loading your rewards...</div>
-        <div class="progress">
-          <div id="progressBar"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SCREEN 2: HOME -->
-    <section id="homeScreen" class="screen" aria-label="Birhan Cash home">
-      <img src="assets/home-screen.png" class="screen-image" alt="Birhan Cash home">
-
-      <!-- Transparent clickable areas positioned over the reference design -->
-      <button class="hotspot play" data-message="Play Games" aria-label="Play Games"></button>
-      <button class="hotspot earn" data-message="Earn Rewards" aria-label="Earn Rewards"></button>
-      <button class="hotspot withdraw" data-message="Withdraw Cash" aria-label="Withdraw Cash"></button>
-      <button class="hotspot grow" data-message="Grow Together" aria-label="Grow Together"></button>
-
-      <button id="signupBtn" class="hotspot signup" aria-label="Sign Up"></button>
-      <button id="loginBtn" class="hotspot login" aria-label="Log In"></button>
-
-      <div class="dots" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </section>
-
-  </main>
-
-  <div id="toast" class="toast"></div>
-
-  <!-- Simple modal for Sign Up / Log In -->
-  <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal-card">
-      <button id="closeModal" class="close" aria-label="Close">×</button>
-      <h2 id="modalTitle">Sign Up</h2>
-      <p id="modalSubtitle">Create your Birhan Cash account.</p>
-
-      <form id="accountForm">
-        <input id="nameInput" type="text" placeholder="Full name" autocomplete="name">
-        <input id="emailInput" type="email" placeholder="Email address" autocomplete="email" required>
-        <input id="passwordInput" type="password" placeholder="Password" autocomplete="new-password" required>
-        <button type="submit" class="form-submit">Continue →</button>
-      </form>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#00150d"><title>Birhan Cash</title><link rel="stylesheet" href="style.css"></head><body><main id="app">
+<section id="loading" class="screen"><img src="assets/loading.png" class="art" alt=""><div class="loading-bar"><div class="loading-progress"></div></div></section>
+<section id="landing" class="screen hidden"><img src="assets/landing.png" class="art" alt=""><button class="hotspot signup-hotspot" onclick="go('signup')" aria-label="Sign Up"></button><button class="hotspot login-hotspot" onclick="go('login')" aria-label="Log In"></button></section>
+<section id="signup" class="screen hidden form-screen"><img src="assets/signup.png" class="art" alt="Create Account"><button class="back" onclick="back()" aria-label="Back">←</button>
+<input id="fullName" class="field name" type="text" autocomplete="name" placeholder="Full Name" aria-label="Full Name"><input id="email" class="field email" type="email" autocomplete="email" placeholder="Email Address" aria-label="Email Address"><input id="phone" class="field phone" type="tel" autocomplete="tel" placeholder="Phone Number" aria-label="Phone Number"><input id="password" class="field pass1" type="password" autocomplete="new-password" placeholder="Password" aria-label="Password"><button class="eye eye1" onclick="togglePassword('password')" aria-label="Show or hide password"></button><input id="confirmPassword" class="field pass2" type="password" autocomplete="new-password" placeholder="Confirm Password" aria-label="Confirm Password"><button class="eye eye2" onclick="togglePassword('confirmPassword')" aria-label="Show or hide confirm password"></button>
+<label class="custom-check terms-check"><input id="terms" type="checkbox"><span></span></label><button class="link-zone terms-zone" onclick="toast('Terms & Conditions')" aria-label="Terms & Conditions"></button><button class="link-zone privacy-zone" onclick="toast('Privacy Policy')" aria-label="Privacy Policy"></button><button class="action signup-action" onclick="submitSignup()" aria-label="Sign Up"></button><button class="action google-signup" onclick="toast('Google sign-up selected')" aria-label="Sign Up with Google"></button><button class="action apple-signup" onclick="toast('Apple sign-up selected')" aria-label="Sign Up with Apple"></button><button class="action signup-login" onclick="go('login')" aria-label="Log In"></button></section>
+<section id="login" class="screen hidden form-screen"><img src="assets/login.png" class="art" alt="Welcome Back"><button class="back" onclick="back()" aria-label="Back">←</button><input id="loginId" class="field login-id" type="text" autocomplete="username" placeholder="Email Address or Phone Number" aria-label="Email Address or Phone Number"><input id="loginPassword" class="field login-pass" type="password" autocomplete="current-password" placeholder="Password" aria-label="Password"><button class="eye login-eye" onclick="togglePassword('loginPassword')" aria-label="Show or hide password"></button><label class="custom-check remember-check"><input id="remember" type="checkbox"><span></span></label><button class="link-zone forgot-zone" onclick="toast('Forgot Password selected')" aria-label="Forgot Password"></button><button class="action login-action" onclick="submitLogin()" aria-label="Log In"></button><button class="action google-login" onclick="toast('Google login selected')" aria-label="Continue with Google"></button><button class="action apple-login" onclick="toast('Apple login selected')" aria-label="Continue with Apple"></button><button class="action login-signup" onclick="go('signup')" aria-label="Sign Up"></button></section>
+<section id="verification" class="screen hidden form-screen verification-screen"><img src="assets/verification_v4.png" class="art" alt="Email Verification">
+<img src="assets/email_patch.png" class="replace-patch email-patch" alt="" aria-hidden="true"><img src="assets/timer_patch.png" class="replace-patch timer-patch" alt="" aria-hidden="true"><img src="assets/back_patch.png" class="replace-patch back-patch" alt="" aria-hidden="true">
+<button class="back" onclick="back()" aria-label="Back">←</button>
+<div id="verification-email" class="verification-email"><span class="email-label">Email Address</span><span class="email-value"></span></div>
+<div id="verification-timer" class="verification-timer" aria-live="polite">05:00</div>
+<div class="otp-fields"><div class="otp-shell"><input class="otp" id="otp1" inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="Verification digit 1"></div><div class="otp-shell"><input class="otp" id="otp2" inputmode="numeric" maxlength="1" aria-label="Verification digit 2"></div><div class="otp-shell"><input class="otp" id="otp3" inputmode="numeric" maxlength="1" aria-label="Verification digit 3"></div><div class="otp-shell"><input class="otp" id="otp4" inputmode="numeric" maxlength="1" aria-label="Verification digit 4"></div><div class="otp-shell"><input class="otp" id="otp5" inputmode="numeric" maxlength="1" aria-label="Verification digit 5"></div><div class="otp-shell"><input class="otp" id="otp6" inputmode="numeric" maxlength="1" aria-label="Verification digit 6"></div></div>
+<button class="verification-zone resend-zone" onclick="resendCode()" aria-label="Resend Code"></button><button class="verification-zone verify-zone" onclick="verifyEmail()" aria-label="Verify Email"></button><button class="verification-zone back-zone" onclick="back()" aria-label="Back"></button></section>
+<div id="toast" class="toast hidden"></div></main><script src="app.js"></script></body></html>
