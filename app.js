@@ -5,8 +5,10 @@ function route(id,replace=false){const url=location.href.split("#")[0]+"#"+id;if
 function go(id){if(id!==current)route(id,false)}
 function back(){if(history.length>1)history.back();else route("landing",true)}
 window.addEventListener("popstate",()=>{const id=location.hash.slice(1);show(screens.includes(id)?id:"landing")});
-(function init(){const id=location.hash.slice(1);if(id&&screens.includes(id)){show(id);if(id==="verification"){setVerificationEmail(getSavedEmail());clearOtp();startVerificationTimer()}}else route("loading",true)})();
+(async function init(){await handleAuthCallback();const id=location.hash.slice(1);if(id&&screens.includes(id)){show(id);if(id==="verification"){setVerificationEmail(getSavedEmail());clearOtp();startVerificationTimer()}}else route("loading",true)})();
 setTimeout(()=>{if(current==="loading")route("landing",true)},4450);
+async function handleAuthCallback(){const {data:{session}}=await supabaseClient.auth.getSession();if(session){show("landing");return true}return false}
+
 function togglePassword(id){const e=document.getElementById(id);const eye=document.querySelector(`.eye[onclick*="${id}"]`);const showing=e.type==="password";e.type=showing?"text":"password";if(eye)eye.classList.toggle("password-visible",showing)}
 function toast(msg){const e=document.getElementById("toast");e.textContent=msg;e.classList.remove("hidden");clearTimeout(window.__toast);window.__toast=setTimeout(()=>e.classList.add("hidden"),1600)}
 function saveUser(name,email,phone){localStorage.setItem("birhan_cash_user",JSON.stringify({name,email,phone}))}
